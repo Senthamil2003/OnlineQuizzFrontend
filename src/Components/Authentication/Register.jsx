@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import axios from "axios";
-import { API_URL } from "../../GeneralVariables/general";
+import { Spinner } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const Register = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
-
+  const [buttonLoad, setbuttonLoad] = useState(false);
   const validateForm = () => {
     let isValid = true;
     const newErrors = {};
@@ -91,6 +91,7 @@ const Register = () => {
       console.log(finaldata);
 
       try {
+        setbuttonLoad(true);
         const response = await axios.post(
           `https://quizzappdeploy-gvh9bkgve3a6fecc.eastus-01.azurewebsites.net/api/Auth/Register`,
           finaldata
@@ -109,9 +110,8 @@ const Register = () => {
         });
         setTimeout(() => {
           navigate("/login");
-        }, 800);
+        }, 500);
       } catch (error) {
-        
         toast.error(error.response?.data.message, {
           position: "top-right",
           autoClose: 1000,
@@ -123,6 +123,8 @@ const Register = () => {
           theme: "light",
         });
         console.error("Error in login", error);
+      } finally {
+        setbuttonLoad(false);
       }
     } else {
       console.log("Form has errors, please correct them");
@@ -225,9 +227,21 @@ const Register = () => {
             />
             <div className="register-error-text">{errors.address}</div>
           </div>
-          <button type="submit" className="register-button">
-            Register
-          </button>
+          {buttonLoad ? (
+            <button className="register-button" disabled={true}>
+              <Spinner
+                animation="border"
+                className="custome-btn-spinner"
+                role="status"
+              >
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            </button>
+          ) : (
+            <button type="submit" className="register-button">
+              Register
+            </button>
+          )}
         </form>
       </div>
     </div>

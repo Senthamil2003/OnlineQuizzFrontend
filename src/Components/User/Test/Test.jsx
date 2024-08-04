@@ -22,6 +22,7 @@ export default function Test() {
   const [duration, setDuration] = useState();
   const [testName, setTestName] = useState();
   const [result, setResult] = useState();
+  const [load, setLoad] = useState(false);
   const [ct, setCt] = useState(0);
   const markedCt = useRef();
   const answererCt = useRef();
@@ -82,7 +83,7 @@ export default function Test() {
       return false;
     }
   };
-  console.log(answers);
+
 
   const handleShow1 = () => {
     setShow1(true);
@@ -171,7 +172,7 @@ export default function Test() {
               ...item,
               answer: value,
               isChanged: true,
-              selectedAnswer: value,
+              answer: value,
             }
           : item
       )
@@ -186,7 +187,7 @@ export default function Test() {
         .filter((answer) => answer.isChanged)
         .map((answer) => ({
           answerId: answer.answerId,
-          answerName: answer.selectedAnswer,
+          answerName: answer.answer,
           isFlaged: answer.flagged,
         }));
 
@@ -231,6 +232,7 @@ export default function Test() {
     }
 
     try {
+      setLoad(true);
       var submission = {
         submissionId: submissionTest.current,
         finishTime: new Date().toISOString(),
@@ -249,8 +251,13 @@ export default function Test() {
       console.log("Submission successful:", response.data);
     } catch (error) {
       console.error("Error submitting test:", error);
+    } finally {
+      setLoad(false);
     }
   };
+  if (load) {
+    return <Loader />;
+  }
 
   if (isFinish) {
     if (result)

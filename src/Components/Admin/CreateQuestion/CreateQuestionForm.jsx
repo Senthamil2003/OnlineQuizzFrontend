@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./CreateQuestionForm.css";
 import AdminNav from "../Navbar/AdminNav";
 import axiosInstance from "../../../GeneralVariables/AxiosInstance";
@@ -16,7 +15,7 @@ const CreateQuestionForm = () => {
     testDuration: 0,
     isActive: true,
     questions: [],
-    testImage: "",
+    testImage: null,
   });
 
   const [questionCount, setQuestionCount] = useState(1);
@@ -31,16 +30,10 @@ const CreateQuestionForm = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setFormData((prevData) => ({
-        ...prevData,
-        testImage: reader.result,
-      }));
-    };
-    if (file) {
-      reader.readAsDataURL(file);
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      testImage: file,
+    }));
   };
 
   const generateQuestions = () => {
@@ -77,46 +70,57 @@ const CreateQuestionForm = () => {
       return { ...prevData, questions: updatedQuestions };
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-   
-    const data = new FormData();
-    data.append("certificationName", formData.certificationName);
-    data.append("testDescription", formData.testDescription);
-    data.append("dificultyLeavel", formData.dificultyLeavel);
-    data.append("createdDate", formData.createdDate);
-    data.append("attendQuestionCount", formData.attendQuestionCount);
-    data.append("totalAvailableQuestion", formData.totalAvailableQuestion);
-    data.append("retakeWaitDays", formData.retakeWaitDays);
-    data.append("testDuration", formData.testDuration);
-    data.append("isActive", formData.isActive);
-
-    if (formData.testImage) {
-      const blob = dataURLtoBlob(formData.testImage);
-      data.append("testImage", blob,"sample");
+    if (
+      !formData.certificationName ||
+      !formData.testDescription ||
+      !formData.dificultyLeavel ||
+      !formData.createdDate ||
+      !formData.testImage ||
+      formData.questions.length === 0
+    ) {
+      alert("Please fill all required fields and add at least one question.");
+      return;
     }
 
+    const data = new FormData();
+    data.append("CertificationName", formData.certificationName);
+    data.append("TestDescription", formData.testDescription);
+    data.append("DificultyLeavel", formData.dificultyLeavel);
+    data.append("CreatedDate", formData.createdDate);
+    data.append("AttendQuestionCount", formData.attendQuestionCount.toString());
+    data.append(
+      "TotalAvailableQuestion",
+      formData.totalAvailableQuestion.toString()
+    );
+    data.append("RetakeWaitDays", formData.retakeWaitDays.toString());
+    data.append("TestDuration", formData.testDuration.toString());
+    data.append("IsActive", formData.isActive.toString());
+    data.append("TestImage", formData.testImage);
+
+    // Append questions as separate form fields
     formData.questions.forEach((question, index) => {
       data.append(`questions[${index}].question`, question.question);
-      data.append(`questions[${index}].points`, question.points);
+      data.append(`questions[${index}].points`, question.points.toString());
       data.append(`questions[${index}].correctAnswer`, question.correctAnswer);
       data.append(`questions[${index}].questionType`, question.questionType);
-      data.append(`questions[${index}].isActive`, question.isActive);
+      data.append(`questions[${index}].isActive`, question.isActive.toString());
       question.options.forEach((option, optionIndex) => {
         data.append(`questions[${index}].options[${optionIndex}]`, option);
       });
     });
 
-   
     try {
       const response = await axiosInstance.post(
         "api/Admin/CreateQuestion",
         data,
         {
           headers: {
-            Accept: "application/json",
-          }
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
       console.log("Response:", response.data);
@@ -134,46 +138,36 @@ const CreateQuestionForm = () => {
         testDuration: 0,
         isActive: true,
         questions: [],
-        testImage: "",
+        testImage: null,
       });
       setQuestionCount(1);
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred while submitting the form.");
+      if (error.response) {
+        console.error("Error details:", error.response.data);
+        alert(
+          `An error occurred: ${JSON.stringify(error.response.data.errors)}`
+        );
+      } else {
+        alert("An error occurred while submitting the form.");
+      }
     }
   };
-
-  // Utility function to convert data URL to Blob
-  const dataURLtoBlob = (dataurl) => {
-    var arr = dataurl.split(","),
-      mime = arr[0].match(/:(.*?);/)[1],
-      bstr = atob(arr[1]),
-      n = bstr.length,
-      u8arr = new Uint8Array(n);
-    while (n--) {
-      u8arr[n] = bstr.charCodeAt(n);
-    }
-    return new Blob([u8arr], { type: mime });
-  };
-
-  console.log(formData);
-
   return (
     <div className="total-create-question">
       <AdminNav />
       <form onSubmit={handleSubmit} className="create-question-form">
         <h2 className="question-form-heading">Create Certification Test</h2>
-        {formData.testImage && (
-          <div className="create-test-img-cont">
-            <div className="image-preview">
-              <img src={formData.testImage} alt="Test Preview" />
-            </div>
-          </div>
-        )}
+
         <div className="input-group custom-input-admin">
           <label>Upload Test Image:</label>
           <br />
-          <input type="file" accept="image/*" onChange={handleFileChange} />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            required
+          />
         </div>
 
         <div className="input-group custom-input-admin">
@@ -290,12 +284,12 @@ const CreateQuestionForm = () => {
         {formData.questions.map((question, index) => (
           <div key={index} className="question-edit">
             <textarea
-              type="textarea"
               value={question.question}
               onChange={(e) =>
                 handleQuestionChange(index, "question", e.target.value)
               }
               placeholder="Enter question"
+              required
             />
             <br />
             <label>Select Question Type</label>
@@ -324,6 +318,7 @@ const CreateQuestionForm = () => {
                       handleOptionChange(index, optionIndex, e.target.value)
                     }
                     placeholder={`Option ${optionIndex + 1}`}
+                    required
                   />
                 </div>
               ))}
@@ -337,6 +332,7 @@ const CreateQuestionForm = () => {
                 handleQuestionChange(index, "correctAnswer", e.target.value)
               }
               placeholder="Correct Answer"
+              required
             />
             <br />
 

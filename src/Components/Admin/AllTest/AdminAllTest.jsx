@@ -114,7 +114,7 @@ export default function AdminAllTest() {
               {filterData(data).map((item) => (
                 <AddTestCard
                   key={item.testId}
-                  imageUrl={sample}
+                  imageUrl={item.imageUrl}
                   cardData={item}
                   onLikeToggle={handleLikeToggle}
                 />

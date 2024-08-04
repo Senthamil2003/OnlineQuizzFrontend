@@ -11,7 +11,7 @@ const HistoryCard = ({ imageUrl, cardData, onLikeToggle }) => {
       cardData.isFavourite,
       cardData.favouriteId
     );
-    setbuttonLoad(false)
+    setbuttonLoad(false);
   };
 
   return (
@@ -90,7 +90,10 @@ const HistoryCard = ({ imageUrl, cardData, onLikeToggle }) => {
                   d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"
                 />
               </svg>
-              <p className={cardData.testDifficult}> {cardData.testDifficult}</p>
+              <p className={cardData.testDifficult}>
+                {" "}
+                {cardData.testDifficult}
+              </p>
             </div>
 
             <p className="card-text"></p>
@@ -129,17 +132,18 @@ const HistoryCard = ({ imageUrl, cardData, onLikeToggle }) => {
                 </button>
               </Link>
 
-              <button
-                className="view-btn btn"
-                value={cardData.testId}
-                disabled={!cardData.isActive}
+              <Link
+                className="view-btn "
+                to={`/testpreview?testid=${cardData.testId}`}
               >
-                {cardData.isResume
-                  ? "Resume Test"
-                  : cardData.isPending
-                  ? "Pending"
-                  : "Start Test"}
-              </button>
+                <button className="view-btn" value={cardData.testId}>
+                  {cardData.isResume
+                    ? "Resume"
+                    : cardData.isPending
+                    ? "Pending"
+                    : "Start Test"}
+                </button>
+              </Link>
             </div>
           </div>
         </div>

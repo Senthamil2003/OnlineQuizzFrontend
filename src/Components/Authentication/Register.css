@@ -32,7 +32,7 @@
   .register-title {
     font-size: 30px;
     text-align: center;
-    color: #438686;
+    color: #6048a1;
     font-family: poppin-extra;
     margin: 1%;
   }
@@ -67,9 +67,10 @@
   }
   
   .register-button {
+    height: 45px;
     width: 99.5%;
     padding: 0.75rem;
-    background-color: #438686;
+    background-color: #6048a1;
     color: white;
     border: none;
     border-radius: 4px;

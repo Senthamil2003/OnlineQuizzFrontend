@@ -66,6 +66,8 @@ const Login = () => {
       setTimeout(() => {
         if (response.data.role == "User") {
           navigate("/home");
+        } else if (response.data.role == "Admin") {
+          navigate("/adminviewtest");
         }
       }, 500);
 

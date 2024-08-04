@@ -42,9 +42,9 @@ function App() {
           {/* </Route> */}
 
           <Route path="/login" element={<Login />} />
-          <Route path="/admiviewtest" element={<AdminAllTest />} />
+          <Route path="/adminviewtest" element={<AdminAllTest />} />
           <Route
-            path="/admin/createQuestion"
+            path="/createQuestion"
             element={<CreateQuestionForm />}
           />
           <Route path="/register" element={<Register />} />

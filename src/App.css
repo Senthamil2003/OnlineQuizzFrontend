@@ -35,10 +35,14 @@ body {
   font-weight: 500;
   color: rgb(4, 158, 4);
 }
-.view-btn{
+.view-btn {
   border-radius: 6px;
 }
-.spinner-tot-div{
+.view-btn:hover {
+  background-color: #6543c3;
+  border-color: #6543c3;
+}
+.spinner-tot-div {
   height: 100vh;
 }
 .custom-spinner {

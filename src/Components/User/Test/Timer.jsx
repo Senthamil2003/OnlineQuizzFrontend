@@ -3,7 +3,6 @@ import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import "./Timer.css";
 
 export default function Timer({ time, totalTime, submitFunction }) {
-  console.log(totalTime,time)
   return (
     <div>
       <CountdownCircleTimer

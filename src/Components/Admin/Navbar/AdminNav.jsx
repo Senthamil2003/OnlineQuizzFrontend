@@ -11,11 +11,11 @@ const AdminNav = () => {
         <Navbar.Toggle aria-controls="navbarSupportedContent" />
         <Navbar.Collapse id="navbarSupportedContent">
           <Nav  className="mx-auto mb-2 mb-lg-0">
-            <Nav.Link as={Link} to="/home" >
+            <Nav.Link as={Link} to="/adminviewtest" >
               AllTest
             </Nav.Link>
-            <Nav.Link as={Link} to="/alltest" >
-              View Stats
+            <Nav.Link as={Link} to="/createQuestion" >
+              Create Question
             </Nav.Link>
           
           </Nav>
