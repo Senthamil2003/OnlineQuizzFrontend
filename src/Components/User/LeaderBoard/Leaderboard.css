@@ -1,0 +1,215 @@
+.main-leaderboard {
+  background-color: #f6f8fc;
+}
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+}
+.leader-table-hide{
+  display: none;
+}
+.leader-submission{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    
+    width: 100%;
+   
+}
+.leader-submission div{
+  padding: 3px;
+  border-radius: 4px;
+  width: 70px;
+
+}
+.leader-pass{
+  background-color: #c9f4df;
+  color: #14804a;
+}
+.leader-fail{
+  background-color: #faf0f3;
+  color: #d12953;
+  
+}
+
+.stats .col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stats .stats-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  margin: 10px;
+  height: 120px;
+  width: 280px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.ststs-props {
+  display: flex;
+  align-items: center;
+  padding: 2%;
+  width: 100%;
+}
+.ststs-props .svg-cont {
+  background-color: #d3d7f7;
+  margin: 10%;
+  border-radius: 5px;
+  padding: 2%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+}
+.ststs-props .svg-cont svg {
+  fill: #6249a7;
+}
+
+.stats-text {
+  color: gray;
+  margin-top: 7px;
+  margin: 0;
+}
+
+.stats-count {
+  font-family: poppin-extra;
+  font-size: 18px;
+  font-size: 20px;
+  margin: 0;
+  color: #6249a7;
+}
+
+.table-cont {
+  background-color: white;
+  border-radius: 10px;
+  margin: 1%;
+  padding: 2%;
+  height: auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.table-top {
+  padding: 2%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.table-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.table-left .report-btn {
+  cursor: pointer;
+  text-align: center;
+  margin: 1%;
+  height: auto;
+  width: 100px;
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  padding: 3%;
+}
+.table-left .report-btn.active {
+  background-color: #438686;
+  color: white;
+}
+
+table {
+  text-align: center;
+  border-radius: 10px;
+}
+.leaderboard-btn {
+  border: none;
+  height: 43px;
+  margin-right: 3%;
+  border-radius: 7px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  width: 120px;
+  background-color: white;
+}
+.leader-active {
+  background-color: #6249a7 !important;
+  color: white;
+}
+table td,
+table th {
+  vertical-align: middle;
+  height: 60px;
+  color: #666 !important;
+}
+table th {
+  border-color: rgb(227, 224, 224) !important;
+  color: #6249a7 !important;
+}
+table tbody {
+  border-color: rgb(227, 224, 224) !important;
+}
+
+.table-right {
+  display: flex;
+  align-items: center;
+}
+
+.filter {
+  border: none;
+  margin: 3%;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  height: 38px;
+  width: 38px;
+}
+
+.leader-search {
+  margin: 3%;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto; 
+}
+
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 20px;
+}
+
+.pagination-info {
+  font-size: 15px;
+  color: #666;
+}
+
+.pagination {
+  display: flex;
+  gap: 5px;
+}
+
+.page-btn {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.page-btn:hover {
+  background-color: #e9ecef;
+}
+.page-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}

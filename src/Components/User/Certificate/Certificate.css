@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@400;700&display=swap");
+
+.certificate-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.certificate {
+  width: 297mm;
+  height: 210mm;
+  padding: 20mm;
+  background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+  border: 10px solid #4a3780;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  color: #333;
+  position: relative;
+  
+}
+.certificate-container{
+  overflow: scroll;
+}
+
+.certificate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0.5;
+}
+
+.certificate-header {
+  margin-bottom: 1px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logo img {
+  object-fit: contain;
+  height: 120px;
+  width: 120px;
+}
+
+.certificate-header h1 {
+  font-size: 48px;
+  color: #4a3780;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.certificate-header h2 {
+  font-size: 24px;
+  color: #666;
+  margin-bottom: 5mm;
+}
+
+.certificate-body {
+  margin: 10mm 0;
+}
+
+.certificate-body h2 {
+  font-size: 36px;
+  color: #4a3780;
+  margin: 10px 0;
+  font-weight: 700;
+}
+
+.certificate-body h3 {
+  font-size: 24px;
+  color: #666;
+  margin: 10px 0;
+  font-style: italic;
+}
+
+.certificate-body p {
+  font-size: 18px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.certificate-footer {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20mm;
+}
+
+.signature {
+  text-align: center;
+}
+
+.signature p {
+  margin: 2px 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.download-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #4a3780;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.certificate-empty-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.certificate-empty-cont img {
+  height: 300px;
+  width: 300px;
+}
+
+.cert-empty-image {
+  color: gray;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 500px;
+  width: 500px;
+}
+.download-btn:hover {
+  background-color: #3a2a63;
+}

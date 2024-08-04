@@ -1,0 +1,72 @@
+.score-percentage {
+  height: 230px;
+  width: 230px;
+}
+.score-percentage-cont {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin: 2% 0;
+}
+.col-6 {
+}
+
+.row .test-result-text:nth-of-type(2) {
+  text-align: end;
+  
+}
+.test-result-text{
+    
+    font-size: 19px;
+    padding: 0.5%;
+}
+
+.test-result-tot-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+}
+.checkout-cont {
+  margin: 1% 0;
+  height: auto;
+  padding: 5%;
+  color: #000000;
+}
+
+
+.checkout-button {
+  text-align: center;
+  background-color: #6249a7;
+  color: white;
+  border: 0px;
+  height: 40px;
+  width: 100%;
+  margin-top: 3%;
+}
+
+.btn:hover {
+  background-color: rgb(3, 122, 78);
+  color: white;
+}
+
+.result-card {
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 600px;
+  padding: 3%;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+.result-head {
+  font-family: poppin-bold;
+
+  color: #6249a7;
+
+  text-align: center;
+  font-size: 28px;
+  margin: 2%;
+}

@@ -1,0 +1,73 @@
+@font-face {
+  font-family: poppin-regular;
+  src: url("../src/Assets/Fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: poppin-extra;
+  src: url("./Assets/Fonts/Poppins-ExtraBold.ttf");
+}
+@font-face {
+  font-family: logo;
+  src: url("./Assets/Fonts/MilestoneFreeVersion-Script.otf");
+}
+@font-face {
+  font-family: poppin-bold;
+  src: url("./Assets/Fonts/Poppins-Bold.ttf");
+}
+body {
+  font-family: poppin-regular;
+}
+.spinner-div {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Normal {
+  font-weight: 500;
+  color: rgb(184, 122, 6);
+}
+.Hard {
+  color: rgb(178, 10, 10);
+  font-weight: 500;
+}
+.Easy {
+  font-weight: 500;
+  color: rgb(4, 158, 4);
+}
+.view-btn{
+  border-radius: 6px;
+}
+.spinner-tot-div{
+  height: 100vh;
+}
+.custom-spinner {
+  background-color: #6048a1 !important;
+}
+.test-cart-totcont {
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.custom-card-change {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 596px) {
+  .card {
+    flex-direction: column !important;
+    height: auto !important;
+  }
+  .test-card-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .test-card-img img {
+    height: 60% !important;
+    width: 60% !important;
+  }
+}

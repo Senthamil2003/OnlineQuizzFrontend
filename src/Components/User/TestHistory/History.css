@@ -1,0 +1,48 @@
+.history-controler {
+  margin-top: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.history-stats-btn{
+    margin-right: 5%;
+    width: 100%;
+}
+.load-btn{
+  width: 100%;
+  background-color: #6048a1;
+  color: white;
+  height: 45px;
+  margin-right: 5%;
+}
+.history-cont{
+    padding: 2%;
+}
+.history-btn-cont {
+  display: flex;
+}
+.history-search {
+    width: 25%;
+}
+.history-active {
+  background-color: #6048a1 !important;
+  color: white;
+}
+.history-head {
+  text-align: center;
+  font-family: poppin-extra;
+  font-size: 25px;
+  color: #6048a1;
+}
+.history-action-btn {
+  background-color: white;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  margin: 2%;
+  height: 42px;
+  width: 120px;
+}
+.custome-btn-spinner{
+  height: 23px;
+  width: 23px;
+}
