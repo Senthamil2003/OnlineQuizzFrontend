@@ -92,7 +92,7 @@ const Register = () => {
 
       try {
         const response = await axios.post(
-          `http://138.91.106.12:8080/api/Auth/Register`,
+          `https://quizzappdeploy-gvh9bkgve3a6fecc.eastus-01.azurewebsites.net/api/Auth/Register`,
           finaldata
         );
 
