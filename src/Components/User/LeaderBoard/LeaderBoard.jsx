@@ -187,7 +187,7 @@ export default function Leaderboard() {
             <div className="stats-item">
               <div className="ststs-props">
                 <div className="svg-cont">
-                  {statsData.isPassed ? (
+                  {statsData?.isPassed ? (
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="33"
