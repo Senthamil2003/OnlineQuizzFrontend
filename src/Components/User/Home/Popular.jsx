@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axiosInstance from "../../../GeneralVariables/AxiosInstance";
 import "../AllTest/Alltest.css";
 import sample from "../../../Assets/imges/angular.png";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import TestCard from "../AllTest/TestCard";
 import Loader from "../Loader/Loader";
@@ -93,7 +93,11 @@ export default function Popular() {
     }
   };
   if (pageLoad) {
-    return <Loader />;
+    return (
+      <div className="spinner-div">
+        <Spinner animation="grow" variant="dark" className="custom-spinner" />
+      </div>
+    );
   } else if (data)
     return (
       <div>

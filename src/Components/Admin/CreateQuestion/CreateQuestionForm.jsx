@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./CreateQuestionForm.css";
 import AdminNav from "../Navbar/AdminNav";
 import axiosInstance from "../../../GeneralVariables/AxiosInstance";
+import { Spinner } from "react-bootstrap";
 
 const CreateQuestionForm = () => {
+  const [load, setLoad] = useState(false);
   const [formData, setFormData] = useState({
     certificationName: "",
     testDescription: "",
@@ -114,6 +116,7 @@ const CreateQuestionForm = () => {
     });
 
     try {
+      setLoad(true);
       const response = await axiosInstance.post(
         "api/Admin/CreateQuestion",
         data,
@@ -151,8 +154,15 @@ const CreateQuestionForm = () => {
       } else {
         alert("An error occurred while submitting the form.");
       }
+    } finally {
+      setLoad(false);
     }
   };
+  if (load) {
+    <div className="spinner-div">
+      <Spinner animation="grow" variant="dark" className="custom-spinner" />
+    </div>;
+  }
   return (
     <div className="total-create-question">
       <AdminNav />
@@ -318,7 +328,6 @@ const CreateQuestionForm = () => {
                       handleOptionChange(index, optionIndex, e.target.value)
                     }
                     placeholder={`Option ${optionIndex + 1}`}
-                    required
                   />
                 </div>
               ))}

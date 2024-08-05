@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const AddTestCard = ({ imageUrl, cardData, onLikeToggle }) => {
-  const handleClick = () => {
-    onLikeToggle(cardData.testId, cardData.isActive);
+  const [buttonLoad, setbuttonLoad] = useState(false);
+  const handleClick = async () => {
+    try {
+      setbuttonLoad(true);
+      await onLikeToggle(cardData.testId, cardData.isActive);
+    } catch {
+    } finally {
+      setbuttonLoad(false);
+    }
   };
 
   return (
@@ -59,14 +67,26 @@ const AddTestCard = ({ imageUrl, cardData, onLikeToggle }) => {
 
             <p className="card-text"></p>
             <div className="card-foot">
-              <button
-                className={`button button-like ${
-                  cardData.isActive ? "liked" : ""
-                }`}
-                onClick={handleClick}
-              >
-                <span>{cardData.isActive ? "Active" : "Dissabled"}</span>
-              </button>
+              {buttonLoad ? (
+                 <button className="button button-like" disabled={true}>
+                 <Spinner
+                   animation="border"
+                   className="custome-btn-spinner"
+                   role="status"
+                 >
+                   <span className="visually-hidden">Loading...</span>
+                 </Spinner>
+               </button>
+              ) : (
+                <button
+                  className={`button button-like ${
+                    cardData.isActive ? "liked" : ""
+                  }`}
+                  onClick={handleClick}
+                >
+                  <span>{cardData.isActive ? "Active" : "Dissabled"}</span>
+                </button>
+              )}
 
               <button className="view-btn btn" value={cardData.testId}>
                 View Test

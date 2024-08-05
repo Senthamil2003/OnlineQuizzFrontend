@@ -12,6 +12,7 @@ import Loader from "../Loader/Loader";
 export default function Favourite() {
   const [data, setData] = useState([]);
   const [pageLoad, setPageLoad] = useState(false);
+  const [empty, setEmpty] = useState(false);
 
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -43,7 +44,6 @@ export default function Favourite() {
   };
 
   const handleLikeToggle = async (testId, currentLikedState) => {
-    const userId = 1;
     try {
       if (currentLikedState) {
         await axiosInstance.put(
