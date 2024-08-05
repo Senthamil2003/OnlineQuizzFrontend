@@ -2,7 +2,7 @@
     background-color:  #6048a1;
     color: white;
     border: none;
-    padding: 3px;
+    padding: 3px !important;
     width: 100px;
     height: 37px;
     border-radius: 5px;

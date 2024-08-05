@@ -131,19 +131,28 @@ const HistoryCard = ({ imageUrl, cardData, onLikeToggle }) => {
                   View Stats
                 </button>
               </Link>
-
-              <Link
-                className="view-btn "
-                to={`/testpreview?testid=${cardData.testId}`}
-              >
-                <button className="view-btn" value={cardData.testId}>
-                  {cardData.isResume
-                    ? "Resume"
-                    : cardData.isPending
-                    ? "Pending"
-                    : "Start Test"}
+              {cardData?.isActive ? (
+                <Link
+                  className="view-btn "
+                  to={`/testpreview?testid=${cardData.testId}`}
+                >
+                  <button className="view-btn" value={cardData.testId}>
+                    {cardData.isResume
+                      ? "Resume"
+                      : cardData.isPending
+                      ? "Pending"
+                      : "Start Test"}
+                  </button>
+                </Link>
+              ) : (
+                <button
+                  className="view-btn"
+                  value={cardData.testId}
+                  disabled="true"
+                >
+                  Deactivated
                 </button>
-              </Link>
+              )}
             </div>
           </div>
         </div>
